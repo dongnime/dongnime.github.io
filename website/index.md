@@ -10,9 +10,6 @@ hero:
   name: "Dongnime"
   text: "Extensions"
   tagline: "Indonesian Donghua & Anime Extension Repository for Aniyomi & Anikku."
-  image:
-    src: /android-chrome-512x512.png
-    alt: Dongnime
   actions:
     - theme: "brand"
       text: "Add to Aniyomi"
