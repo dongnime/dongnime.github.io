@@ -41,13 +41,13 @@ function handleAnalytics() {
         :href="`aniyomi://add-repo?url=${encodeURIComponent(GITHUB_EXTENSION_MIN_JSON)}`"
         @click="handleAnalytics"
       >
-        <span class="text">Add to Aniyomi / Anikku</span>
+        <span class="text">Add to Aniyomi</span>
       </a>
       <a
         class="action-button secondary"
-        :href="`mihon://extension-store?url=${encodeURIComponent(GITHUB_EXTENSION_PB)}`"
+        :href="`anikku://add-repo?url=${encodeURIComponent(GITHUB_EXTENSION_MIN_JSON)}`"
       >
-        <span class="text">Add to Mihon</span>
+        <span class="text">Add to Anikku</span>
       </a>
     </div>
     <span class="version-disclaimer">
