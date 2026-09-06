@@ -4,7 +4,7 @@
 import type { UseQueryOptions } from '@tanstack/vue-query'
 import { useQuery } from '@tanstack/vue-query'
 import axios from 'axios'
-import { GITHUB_EXTENSION_JSON } from '../../config/constants'
+import { GITHUB_EXTENSION_JSON, GITHUB_EXTENSION_BASE } from '../../config/constants'
 
 export type ReleaseType = 'stable' | 'preview'
 
@@ -62,7 +62,29 @@ export default function useExtensionsRepositoryQuery<S = Extension[]>(options: U
   return useQuery<Extension[], Error, S>({
     queryKey: ['extensions'],
     queryFn: async () => {
-      const { data } = await axios.get<Index>(GITHUB_EXTENSION_JSON)
+      const { data } = await axios.get<any>(GITHUB_EXTENSION_JSON)
+
+      if (Array.isArray(data)) {
+        return data.map((item: any) => ({
+          name: item.name,
+          packageName: item.pkg,
+          resources: {
+            apkUrl: `${GITHUB_EXTENSION_BASE}/apk/${item.apk}`,
+            iconUrl: `${GITHUB_EXTENSION_BASE}/icon/${item.pkg}.png`,
+          },
+          extensionLib: "15",
+          versionCode: String(item.code),
+          versionName: item.version,
+          contentWarning: item.nsfw ? ContentWarning.NSFW : ContentWarning.SAFE,
+          sources: (item.sources || []).map((s: any) => ({
+            id: String(s.id),
+            name: s.name,
+            language: s.lang || 'id',
+            homeUrl: s.baseUrl,
+            mirrorUrls: [],
+          })),
+        }))
+      }
 
       return data.extensionList?.extensions ?? []
     },

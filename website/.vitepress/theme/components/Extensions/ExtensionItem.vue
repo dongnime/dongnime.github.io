@@ -11,7 +11,9 @@ import { ContentWarning } from '../../queries/useExtensionsRepositoryQuery';
 
 const props = defineProps<{ item: SourceRow }>()
 
-const pkgId = props.item.packageName.replace('eu.kanade.tachiyomi.extension.', '');
+const pkgId = props.item.packageName
+  .replace('eu.kanade.tachiyomi.animeextension.', '')
+  .replace('eu.kanade.tachiyomi.extension.', '');
 
 const warning = computed(() => {
   switch (props.item.contentWarning) {

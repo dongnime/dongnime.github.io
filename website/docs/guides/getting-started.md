@@ -17,20 +17,21 @@ Essential information to help you set up the extension store.
 ### Before you start
 Uninstall all existing extensions. You will not get extension updates otherwise.
 
-### Adding the store
-For all modern variants of Mihon (TachiyomiSY, Komikku),
-click the button below to add the store:
+### Adding the repository
+For Aniyomi, Anikku, and compatible Android video extensions forks,
+click the button below to add the repository:
 
 <AddRepoButton />
 
-::: details Adding the store manually
-- Go to <nav to="extension-repos">
-- Select "Add" at the bottom of your screen.
-- Enter <a :href="GITHUB_EXTENSION_PB">{{ GITHUB_EXTENSION_PB }}</a>
+::: details Adding the repository manually
+- Open **Aniyomi** or **Anikku**.
+- Go to **More** → **Settings** → **Browse** → **Extension Repositories**.
+- Select "Add" or tap the **"+"** icon.
+- Enter: <a :href="GITHUB_EXTENSION_PB">{{ GITHUB_EXTENSION_PB }}</a>
 :::
 
-### Reinstall the extensions
-Restart Mihon to reload the extension list, then reinstall all extensions.
+### Reload extensions
+Return to the Browse → Extensions tab and swipe down to refresh the list.
 
 ::: tip
 Go to <nav to="migrate"> to see what extensions you are missing.

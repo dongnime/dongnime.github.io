@@ -21,8 +21,8 @@ const hostname: string = env.VITE_HOSTNAME || 'http://localhost:4173';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Keiyoushi",
-  description: "An extension store for Mihon and variants.",
+  title: "Dongnime",
+  description: "Indonesian Donghua & Anime Extension Repository for Aniyomi & Anikku.",
   cleanUrls: true,
   transformHead: (context) => {
     context.head.push(['meta', { name: 'robots', content: 'noindex, nofollow' }]);
@@ -38,18 +38,13 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/keiyoushi/extensions',
+        link: 'https://github.com/dongnime/extensions',
         ariaLabel: 'Project GitHub',
-      },
-      {
-        icon: 'discord',
-        link: 'https://discord.gg/3FbCpdKbdY',
-        ariaLabel: 'Discord server',
       },
     ],
     
     editLink: {
-      pattern: 'https://github.com/keiyoushi/keiyoushi.github.io/edit/main/website/:path',
+      pattern: 'https://github.com/dongnime/dongnime.github.io/edit/main/website/:path',
       text: 'Help us improve this page',
     },
 

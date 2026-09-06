@@ -4,11 +4,8 @@
 -->
 
 <script setup lang="ts">
-import { GITHUB_EXTENSION_PB } from "../../config/constants";
+import { GITHUB_EXTENSION_MIN_JSON, GITHUB_EXTENSION_PB, ANIYOMI_MIN_VERSION } from "../../config/constants";
 import { onMounted, ref } from "vue";
-import useMihonVersionQuery from "../queries/useMihonVersionQuery";
-
-const { data: mihonVersion } = useMihonVersionQuery();
 
 const isAndroid = ref(true);
 
@@ -18,7 +15,7 @@ onMounted(() => {
 
 function handleAnalytics() {
   window.goatcounter?.count?.({
-    path: "/#add-to-tachiyomi",
+    path: "/#add-to-aniyomi",
     title: "Add extension store",
   });
 }
@@ -31,25 +28,30 @@ function handleAnalytics() {
         Unsupported operating system
       </p>
       <p>
-        <strong>Mihon</strong> is an <strong>Android app</strong> only.
-        Use an <strong>Android device with Mihon installed</strong> to
-        add this extension store.
+        <strong>Aniyomi</strong> is an <strong>Android app</strong> only.
+        Use an <strong>Android device with Aniyomi installed</strong> to
+        add this extension repository.
       </p>
     </div>
   </div>
   <div>
     <div class="action-buttons">
       <a
-        class="action-button"
-        :class="!!isAndroid ? 'primary' : 'secondary'"
-        :href="`mihon://extension-store?url=${encodeURIComponent(GITHUB_EXTENSION_PB)}`"
+        class="action-button primary"
+        :href="`aniyomi://add-repo?url=${encodeURIComponent(GITHUB_EXTENSION_MIN_JSON)}`"
         @click="handleAnalytics"
       >
-        <span class="text">Add store</span>
+        <span class="text">Add to Aniyomi / Anikku</span>
+      </a>
+      <a
+        class="action-button secondary"
+        :href="`mihon://extension-store?url=${encodeURIComponent(GITHUB_EXTENSION_PB)}`"
+      >
+        <span class="text">Add to Mihon</span>
       </a>
     </div>
     <span class="version-disclaimer">
-      Requires <strong>Mihon {{ mihonVersion }}</strong> or newer.
+      Requires <strong>Aniyomi {{ ANIYOMI_MIN_VERSION }}</strong> or newer.
     </span>
   </div>
 </template>
